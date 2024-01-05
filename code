@@ -1,0 +1,34 @@
+import random
+
+def random():
+  return random.randint(1, 100)
+
+def get_user_input():
+  input_str = input("Nhập số của bạn: ")
+  while not input_str.isdigit():
+    print("Nhập số không hợp lệ. Vui lòng nhập lại: ")
+    input_str = input()
+  return int(input_str)
+
+def check_guess(guess, number):
+  if guess == number:
+    return True
+  return False
+
+def main():
+  number = random()
+  turn = 1
+  while True:
+    guess = get_user_input()
+    if check_guess(guess, number):
+      print("Bạn đã đoán đúng trong %d lượt!" % turn)
+      break
+    else:
+      if guess < number:
+        print("Số bạn đoán nhỏ hơn số cần đoán!")
+      else:
+        print("Số bạn đoán lớn hơn số cần đoán!")
+      turn += 1
+
+if __name__ == "__main__":
+  main()
